@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "TickBox.Core/1.0.0": {
+        "dependencies": {
+          "NodaTime": "3.3.2"
+        },
+        "runtime": {
+          "TickBox.Core.dll": {}
+        }
+      },
+      "NodaTime/3.3.2": {
+        "runtime": {
+          "lib/net8.0/NodaTime.dll": {
+            "assemblyVersion": "3.3.2.0",
+            "fileVersion": "3.3.2.0"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "TickBox.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "NodaTime/3.3.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-8hI5b1ENTKQCaPyU6YHpYiMwj5aJKZ4Mnv0bLbhk65Dd44gQsXenUohMzyiIphANa8LdW6vcOvpY/l1urvx4dw==",
+      "path": "nodatime/3.3.2",
+      "hashPath": "nodatime.3.3.2.nupkg.sha512"
+    }
+  }
+}

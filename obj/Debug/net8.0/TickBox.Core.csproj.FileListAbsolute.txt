@@ -1,0 +1,12 @@
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\obj\Debug\net8.0\TickBox.Core.csproj.AssemblyReference.cache
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\obj\Debug\net8.0\TickBox.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\obj\Debug\net8.0\TickBox.Core.AssemblyInfoInputs.cache
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\obj\Debug\net8.0\TickBox.Core.AssemblyInfo.cs
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\obj\Debug\net8.0\TickBox.Core.csproj.CoreCompileInputs.cache
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\bin\Debug\net8.0\TickBox.Core.deps.json
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\bin\Debug\net8.0\TickBox.Core.dll
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\bin\Debug\net8.0\TickBox.Core.pdb
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\obj\Debug\net8.0\TickBox.Core.dll
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\obj\Debug\net8.0\refint\TickBox.Core.dll
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\obj\Debug\net8.0\TickBox.Core.pdb
+C:\Users\hello\Documents\Projetos\app\TickBox.Core\obj\Debug\net8.0\ref\TickBox.Core.dll

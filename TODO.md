@@ -1,0 +1,6 @@
+- [x] Ao criar uma child, ela nao e referenciada na lista de ids da parent, resolver isso.
+- [x] Iniciar a criação asincrona de forma primitiva.
+- [X] Criar JSON formatado.
+- [X] Separar o content da Action para um markdown externo.
+- [ ] WARN - Tornar todo a classe TickBox Assíncrona
+- [ ] Criar função de load para reconstruir o projeto apartir dos dados.

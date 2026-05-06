@@ -1,0 +1,112 @@
+{
+  "version": 3,
+  "targets": {
+    "net8.0": {
+      "NodaTime/3.3.2": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/NodaTime.dll": {
+            "related": ".pdb;.xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/NodaTime.dll": {
+            "related": ".pdb;.xml"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "NodaTime/3.3.2": {
+      "sha512": "8hI5b1ENTKQCaPyU6YHpYiMwj5aJKZ4Mnv0bLbhk65Dd44gQsXenUohMzyiIphANa8LdW6vcOvpY/l1urvx4dw==",
+      "type": "package",
+      "path": "nodatime/3.3.2",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net8.0/NodaTime.dll",
+        "lib/net8.0/NodaTime.pdb",
+        "lib/net8.0/NodaTime.xml",
+        "lib/netstandard2.0/NodaTime.dll",
+        "lib/netstandard2.0/NodaTime.pdb",
+        "lib/netstandard2.0/NodaTime.xml",
+        "nodatime.3.3.2.nupkg.sha512",
+        "nodatime.nuspec"
+      ]
+    }
+  },
+  "projectFileDependencyGroups": {
+    "net8.0": [
+      "NodaTime >= 3.3.2"
+    ]
+  },
+  "packageFolders": {
+    "C:\\Users\\hello\\.nuget\\packages\\": {}
+  },
+  "project": {
+    "version": "1.0.0",
+    "restore": {
+      "projectUniqueName": "c:\\Users\\hello\\Documents\\Projetos\\app\\TickBox.Core\\TickBox.Core.csproj",
+      "projectName": "TickBox.Core",
+      "projectPath": "c:\\Users\\hello\\Documents\\Projetos\\app\\TickBox.Core\\TickBox.Core.csproj",
+      "packagesPath": "C:\\Users\\hello\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\hello\\Documents\\Projetos\\app\\TickBox.Core\\obj\\",
+      "projectStyle": "PackageReference",
+      "configFilePaths": [
+        "C:\\Users\\hello\\AppData\\Roaming\\NuGet\\NuGet.Config"
+      ],
+      "originalTargetFrameworks": [
+        "net8.0"
+      ],
+      "sources": {
+        "https://api.nuget.org/v3/index.json": {}
+      },
+      "frameworks": {
+        "net8.0": {
+          "targetAlias": "net8.0",
+          "projectReferences": {}
+        }
+      },
+      "warningProperties": {
+        "warnAsError": [
+          "NU1605"
+        ]
+      },
+      "restoreAuditProperties": {
+        "enableAudit": "true",
+        "auditLevel": "low",
+        "auditMode": "direct"
+      }
+    },
+    "frameworks": {
+      "net8.0": {
+        "targetAlias": "net8.0",
+        "dependencies": {
+          "NodaTime": {
+            "target": "Package",
+            "version": "[3.3.2, )"
+          }
+        },
+        "imports": [
+          "net461",
+          "net462",
+          "net47",
+          "net471",
+          "net472",
+          "net48",
+          "net481"
+        ],
+        "assetTargetFallback": true,
+        "warn": true,
+        "frameworkReferences": {
+          "Microsoft.NETCore.App": {
+            "privateAssets": "all"
+          }
+        },
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.420/PortableRuntimeIdentifierGraph.json"
+      }
+    }
+  }
+}
