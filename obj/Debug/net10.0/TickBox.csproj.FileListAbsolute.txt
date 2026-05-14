@@ -1,0 +1,12 @@
+C:\Users\hello\source\repos\TickBox\bin\Debug\net10.0\TickBox.deps.json
+C:\Users\hello\source\repos\TickBox\bin\Debug\net10.0\TickBox.dll
+C:\Users\hello\source\repos\TickBox\bin\Debug\net10.0\TickBox.pdb
+C:\Users\hello\source\repos\TickBox\obj\Debug\net10.0\TickBox.csproj.AssemblyReference.cache
+C:\Users\hello\source\repos\TickBox\obj\Debug\net10.0\TickBox.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hello\source\repos\TickBox\obj\Debug\net10.0\TickBox.AssemblyInfoInputs.cache
+C:\Users\hello\source\repos\TickBox\obj\Debug\net10.0\TickBox.AssemblyInfo.cs
+C:\Users\hello\source\repos\TickBox\obj\Debug\net10.0\TickBox.csproj.CoreCompileInputs.cache
+C:\Users\hello\source\repos\TickBox\obj\Debug\net10.0\TickBox.dll
+C:\Users\hello\source\repos\TickBox\obj\Debug\net10.0\refint\TickBox.dll
+C:\Users\hello\source\repos\TickBox\obj\Debug\net10.0\TickBox.pdb
+C:\Users\hello\source\repos\TickBox\obj\Debug\net10.0\ref\TickBox.dll
