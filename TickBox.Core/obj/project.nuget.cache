@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "aXQswxjYNq0=",
+  "success": true,
+  "projectFilePath": "/home/henrique/Documents/Projects/app/TickBox/TickBox.Core/TickBox.Core.csproj",
+  "expectedPackageFiles": [
+    "/home/henrique/.nuget/packages/nodatime/3.3.2/nodatime.3.3.2.nupkg.sha512"
+  ],
+  "logs": []
+}
