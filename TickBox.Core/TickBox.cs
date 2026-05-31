@@ -26,7 +26,6 @@ public class TickBox
     {
         string local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         globalPath = Path.Combine(local, "tickbox", "storage");
-        Console.WriteLine($"GLOBAL PATH: {globalPath} :GLOBAL PATH");
     }
 
     public static async Task<TickBox> CreateParentAsync(string name, string description, DateTime startDate,
@@ -87,8 +86,8 @@ public class TickBox
         Parent.AddChild(child);
         string folderPath = Path.Combine(globalPath, Parent.Name, child.Name);
         await child.CreateAsync(folderPath, "meta.json");
-        await refreshData(Path.Join(globalPath, Parent.Name, "meta.json"), BoxType.ParentBox,
-            "a"); // Gambiarra das braba desse a aqui, C# nao tem Option<>
+        await refreshData(Path.Join(globalPath, Parent.Name, "meta.json"),
+            BoxType.ParentBox);
     }
 
     public async Task CreateActionAsync(string name, string description, Duration durationTime, string content,

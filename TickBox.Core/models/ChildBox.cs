@@ -10,7 +10,7 @@ public record ChildData(
     string Description,
     bool Archived,
     Guid ParentId,
-    List<Guid> ActionsId,
+    List<string> ActionsName,
     bool IsAbstract,
     Duration DurationTime,
     DateTime CreatedAt,
@@ -19,7 +19,7 @@ public record ChildData(
 public class ChildBox : Box
 {
     public Guid ParentId;
-    public List<Guid> ActionsId = [];
+    public List<string> ActionsName = [];
     public bool IsAbstract = true;
     public Duration DurationTime;
 
@@ -41,7 +41,7 @@ public class ChildBox : Box
             ToggleAbstract();
         }
 
-        ActionsId.Add(action.Id);
+        ActionsName.Add(action.Name);
     }
 
     public async Task CreateAsync(string path, string filePath)
@@ -65,7 +65,7 @@ public class ChildBox : Box
 
     public ChildData Export()
     {
-        return new ChildData(Id, Name, Description, Archived, ParentId, ActionsId,
+        return new ChildData(Id, Name, Description, Archived, ParentId, ActionsName,
             IsAbstract,
             DurationTime, CreatedAt, UpdatedAt);
     }

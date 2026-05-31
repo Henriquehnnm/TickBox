@@ -9,21 +9,21 @@ public record ActionData(
     string Name,
     string Description,
     bool Archived,
-    Guid ChildId,
+    string ChildName,
     Duration DurationTime,
     DateTime CreatedAt,
     DateTime UpdatedAt);
 
 public class ActionBox : Box
 {
-    public Guid ChildId;
+    public string ChildName;
     public string Content;
     public Duration DurationTime;
 
     public ActionBox(string name, string description, ChildBox child, string content, Duration durationTime) : base(
         name, description)
     {
-        this.ChildId = child.Id;
+        this.ChildName = child.Name;
         this.Content = content;
         this.DurationTime = durationTime;
     }
@@ -48,7 +48,7 @@ public class ActionBox : Box
 
     public ActionData Export()
     {
-        return new ActionData(this.Id, this.Name, this.Description, this.Archived, this.ChildId,
+        return new ActionData(this.Id, this.Name, this.Description, this.Archived, this.ChildName,
             this.DurationTime,
             this.CreatedAt, this.UpdatedAt);
     }

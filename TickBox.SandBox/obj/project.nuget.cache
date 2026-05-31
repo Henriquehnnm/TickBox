@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "U64EBH3xB6w=",
+  "dgSpecHash": "vsDkU6l74EU=",
   "success": true,
-  "projectFilePath": "/home/henrique/Documents/Projects/app/TickBox/TickBox.SandBox/TickBox.SandBox.csproj",
+  "projectFilePath": "/home/henrique/Documentos/Projetos/app/TickBox/TickBox.SandBox/TickBox.SandBox.csproj",
   "expectedPackageFiles": [
     "/home/henrique/.nuget/packages/nodatime/3.3.2/nodatime.3.3.2.nupkg.sha512"
   ],

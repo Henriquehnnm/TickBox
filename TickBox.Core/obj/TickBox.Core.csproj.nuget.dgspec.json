@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/henrique/Documents/Projects/app/TickBox/TickBox.Core/TickBox.Core.csproj": {}
+    "/home/henrique/Documentos/Projetos/app/TickBox/TickBox.Core/TickBox.Core.csproj": {}
   },
   "projects": {
-    "/home/henrique/Documents/Projects/app/TickBox/TickBox.Core/TickBox.Core.csproj": {
+    "/home/henrique/Documentos/Projetos/app/TickBox/TickBox.Core/TickBox.Core.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/henrique/Documents/Projects/app/TickBox/TickBox.Core/TickBox.Core.csproj",
+        "projectUniqueName": "/home/henrique/Documentos/Projetos/app/TickBox/TickBox.Core/TickBox.Core.csproj",
         "projectName": "TickBox.Core",
-        "projectPath": "/home/henrique/Documents/Projects/app/TickBox/TickBox.Core/TickBox.Core.csproj",
+        "projectPath": "/home/henrique/Documentos/Projetos/app/TickBox/TickBox.Core/TickBox.Core.csproj",
         "packagesPath": "/home/henrique/.nuget/packages/",
-        "outputPath": "/home/henrique/Documents/Projects/app/TickBox/TickBox.Core/obj/",
+        "outputPath": "/home/henrique/Documentos/Projetos/app/TickBox/TickBox.Core/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/henrique/.nuget/NuGet/NuGet.Config"
@@ -20,11 +20,11 @@
           "net10.0"
         ],
         "sources": {
+          "/usr/lib/dotnet/library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net10.0": {
-            "framework": "net10.0",
             "targetAlias": "net10.0",
             "projectReferences": {}
           }
@@ -39,11 +39,10 @@
           "auditLevel": "low",
           "auditMode": "all"
         },
-        "SdkAnalysisLevel": "10.0.300"
+        "SdkAnalysisLevel": "10.0.100"
       },
       "frameworks": {
         "net10.0": {
-          "framework": "net10.0",
           "targetAlias": "net10.0",
           "dependencies": {
             "NodaTime": {
@@ -67,7 +66,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib/sdk/dotnet10/lib/sdk/10.0.300/PortableRuntimeIdentifierGraph.json",
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/10.0.108/PortableRuntimeIdentifierGraph.json",
           "packagesToPrune": {
             "Microsoft.CSharp": "(,4.7.32767]",
             "Microsoft.VisualBasic": "(,10.4.32767]",
