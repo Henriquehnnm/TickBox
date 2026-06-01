@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="TickBox.Core/TickBox.Core.csproj" />
   <Project Path="TickBox.SandBox/TickBox.SandBox.csproj" />
+  <Project Path="TickBox.UI/TickBox.UI.csproj" />
 </Solution>

@@ -8,5 +8,7 @@ var data = await TickBox.Core.TickBox.CreateParentAsync("Hello Parent", "", now,
 await data.CreateChildAsync("Hello Child", "", durt);
 await data.CreateChildAsync("Hello Child 2", "", durt);
 await data.CreateActionAsync("Hello Action", "", durt, "# Hello World from TickBox!", "Hello Child");
+await data.CreateActionAsync("Hello Action 2", "", durt, "# Hello World from TickBox!", "Hello Child 2");
 var load = await TickBox.Tools.Loader.LoadParentAsync("Hello Parent");
 await load.LoadChildAsync();
+await load.LoadActionAsync();

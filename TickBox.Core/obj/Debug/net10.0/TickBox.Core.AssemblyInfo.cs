@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("TickBox.Core")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+132b7039d7e1f677221d3c6110d62039922e633f")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+ebfae689ed638430d658011648ea02132f2da5af")]
 [assembly: System.Reflection.AssemblyProductAttribute("TickBox.Core")]
 [assembly: System.Reflection.AssemblyTitleAttribute("TickBox.Core")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
