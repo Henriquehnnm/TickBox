@@ -17,15 +17,15 @@ enum BoxType
  */
 public class TickBox
 {
-    private ParentBox Parent;
-    private List<ChildBox> Children = [];
-    private List<ActionBox> Actions = [];
-    private string globalPath;
+    public ParentBox Parent;
+    public List<ChildBox> Children = [];
+    public List<ActionBox> Actions = [];
+    private string _globalPath;
 
     private TickBox()
     {
         string local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        globalPath = Path.Combine(local, "tickbox", "storage");
+        _globalPath = Path.Combine(local, "tickbox", "storage");
     }
 
     public static async Task<TickBox> CreateParentAsync(string name, string description, DateTime startDate,
@@ -41,7 +41,7 @@ public class TickBox
     {
         try
         {
-            string parentPath = Path.Combine(globalPath, Parent.Name);
+            string parentPath = Path.Combine(_globalPath, Parent.Id.ToString());
             string metaPath = Path.Combine(parentPath, "meta.json");
 
             await Parent.CreateAsync(parentPath, metaPath);
@@ -52,7 +52,7 @@ public class TickBox
         }
     }
 
-    private async Task refreshData(string filePath, BoxType type, string childName = "")
+    private async Task RefreshData(string filePath, BoxType type, Guid childId = default)
     {
         var option = new JsonSerializerOptions
         {
@@ -65,7 +65,7 @@ public class TickBox
         }
         else if (type == BoxType.ChildBox)
         {
-            var real = GetChildByName(childName);
+            var real = GetChildById(childId);
             if (real is not null)
             {
                 string meta = JsonSerializer.Serialize(real.Export(), option);
@@ -74,9 +74,9 @@ public class TickBox
         }
     }
 
-    private ChildBox? GetChildByName(string name)
+    private ChildBox? GetChildById(Guid id)
     {
-        return Children.Find(c => c.Name == name);
+        return Children.Find(c => c.Id == id);
     }
 
     public async Task CreateChildAsync(string name, string description, Duration durarionTime)
@@ -84,30 +84,30 @@ public class TickBox
         var child = new ChildBox(name, description, Parent, durarionTime);
         Children.Add(child);
         Parent.AddChild(child);
-        string folderPath = Path.Combine(globalPath, Parent.Name, child.Name);
+        string folderPath = Path.Combine(_globalPath, Parent.Id.ToString(), child.Id.ToString());
         await child.CreateAsync(folderPath, "meta.json");
-        await refreshData(Path.Join(globalPath, Parent.Name, "meta.json"),
+        await RefreshData(Path.Join(_globalPath, Parent.Id.ToString(), "meta.json"),
             BoxType.ParentBox);
     }
 
     public async Task CreateActionAsync(string name, string description, Duration durationTime, string content,
-        string childName)
+        Guid childId)
     {
-        var real = GetChildByName(childName);
+        var real = GetChildById(childId);
 
         if (real is not null)
         {
             var action = new ActionBox(name, description, real, content, durationTime);
             Actions.Add(action);
             real.AddAction(action);
-            string folderPath = Path.Combine(globalPath, Parent.Name, real.Name, action.Name);
+            string folderPath = Path.Combine(_globalPath, Parent.Id.ToString(), real.Id.ToString(), action.Id.ToString());
             await action.CreateAsync(folderPath, "meta.json");
             string childMetaPath =
-                Path.Combine(globalPath, Parent.Name, real.Name,
+                Path.Combine(_globalPath, Parent.Id.ToString(), real.Id.ToString(),
                     "meta.json");
             string contentPath = Path.Combine(folderPath, "content.md");
             await File.WriteAllTextAsync(contentPath, action.Content);
-            await refreshData(childMetaPath, BoxType.ChildBox, real.Name);
+            await RefreshData(childMetaPath, BoxType.ChildBox, real.Id);
         }
     }
 }

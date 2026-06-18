@@ -7,7 +7,7 @@ public record ParentData(
     string Name,
     string Description,
     bool Archived,
-    List<String> ChildrenName,
+    List<Guid> ChildrenIds,
     bool IsDraft,
     DateTime StarDate,
     DateTime EndDate,
@@ -23,7 +23,7 @@ enum CreateType
 
 public class ParentBox : Box
 {
-    public List<String> ChildrenName = [];
+    public List<Guid> ChildrenIds = [];
     public bool IsDraft;
     public DateTime StartDate;
     public DateTime EndDate;
@@ -48,7 +48,7 @@ public class ParentBox : Box
         }
 
 
-        ChildrenName.Add(child.Name);
+        ChildrenIds.Add(child.Id);
     }
 
     public async Task CreateAsync(string path, string filePath)
@@ -69,7 +69,7 @@ public class ParentBox : Box
 
     public ParentData Export()
     {
-        return new ParentData(this.Id, this.Name, this.Description, this.Archived, this.ChildrenName, this.IsDraft,
+        return new ParentData(this.Id, this.Name, this.Description, this.Archived, this.ChildrenIds, this.IsDraft,
             this.StartDate, this.EndDate, this.CreatedAt, this.UpdatedAt);
     }
 }

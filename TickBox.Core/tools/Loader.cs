@@ -1,27 +1,28 @@
+using System.Runtime.InteropServices;
 using System.Text.Json;
 using TickBox.Core.Models;
 
-namespace TickBox.Tools;
+namespace TickBox.Core.tools;
 
 public class Loader
 {
-    private ParentData parent;
-    private List<ChildData> children = [];
-    private List<ActionData> actions = [];
-    private string globalPath;
+    private ParentData _parent;
+    private List<ChildData> _children = [];
+    private List<ActionData> _actions = [];
+    private string _globalPath;
 
     private Loader()
     {
         string local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
-        globalPath = Path.Combine(local, "tickbox", "storage");
+        _globalPath = Path.Combine(local, "tickbox", "storage");
     }
 
-    public static async Task<Loader> LoadParentAsync(string name)
+    public static async Task<Loader> LoadParentAsync(Guid id)
     {
         var loader = new Loader();
-        var path = Path.Combine(loader.globalPath, name, "meta.json");
+        var path = Path.Combine(loader._globalPath, id.ToString(), "meta.json");
         var jsonString = await File.ReadAllTextAsync(path);
-        loader.parent =
+        loader._parent =
             JsonSerializer.Deserialize<ParentData>(jsonString) ??
             throw new InvalidOperationException(); // TODO - tratar null de forma mais elegante 1/3
 
@@ -31,9 +32,9 @@ public class Loader
     public async Task LoadChildAsync()
     {
         var tasks =
-            parent.ChildrenName.Select(async name =>
+            _parent.ChildrenIds.Select(async id =>
             {
-                var path = Path.Combine(globalPath, parent.Name, name, "meta.json");
+                var path = Path.Combine(_globalPath, _parent.Id.ToString(), id.ToString(), "meta.json");
                 var jsonString = await File.ReadAllTextAsync(path);
                 return JsonSerializer.Deserialize<ChildData>(jsonString);
             });
@@ -41,18 +42,18 @@ public class Loader
         var results = await Task.WhenAll(tasks);
         foreach (var child in results)
         {
-            children.Add(child ??
+            _children.Add(child ??
                          throw new InvalidOperationException()); // TODO - Resolver null de forma mais elegante aqui tbm 2/3
         }
     }
 
     public async Task LoadActionAsync()
     {
-        var tasks = children.Select(async child =>
+        var tasks = _children.Select(async child =>
         {
-            var actionTasks = child.ActionsName.Select(async name =>
+            var actionTasks = child.ActionsIds.Select(async id =>
             {
-                var path = Path.Combine(globalPath, parent.Name, child.Name, name, "meta.json");
+                var path = Path.Combine(_globalPath, _parent.Id.ToString(), child.Id.ToString(), id.ToString(), "meta.json");
                 var jsonString = await File.ReadAllTextAsync(path);
                 return JsonSerializer.Deserialize<ActionData>(jsonString);
             });
@@ -65,7 +66,7 @@ public class Loader
         {
             foreach (var i in a)
             {
-                actions.Add(i ??
+                _actions.Add(i ??
                             throw new InvalidOperationException()); // TODO -  Tratar  Null de forma mais elegante aqui tbm 3/3
             }
         }

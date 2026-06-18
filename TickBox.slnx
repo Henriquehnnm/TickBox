@@ -1,5 +1,8 @@
 <Solution>
+  <Folder Name="/TickBox.UI/">
+    <Project Path="TickBox.UI/TickBox.UI.Desktop/TickBox.UI.Desktop.csproj" />
+    <Project Path="TickBox.UI/TickBox.UI/TickBox.UI.csproj" />
+  </Folder>
   <Project Path="TickBox.Core/TickBox.Core.csproj" />
   <Project Path="TickBox.SandBox/TickBox.SandBox.csproj" />
-  <Project Path="TickBox.UI/TickBox.UI.csproj" />
 </Solution>

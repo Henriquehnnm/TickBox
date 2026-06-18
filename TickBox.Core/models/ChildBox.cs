@@ -1,6 +1,5 @@
 ﻿using NodaTime;
 using System.Text.Json;
-using System.Xml.Linq;
 
 namespace TickBox.Core.Models;
 
@@ -10,7 +9,7 @@ public record ChildData(
     string Description,
     bool Archived,
     Guid ParentId,
-    List<string> ActionsName,
+    List<Guid> ActionsIds,
     bool IsAbstract,
     Duration DurationTime,
     DateTime CreatedAt,
@@ -19,7 +18,7 @@ public record ChildData(
 public class ChildBox : Box
 {
     public Guid ParentId;
-    public List<string> ActionsName = [];
+    public List<Guid> ActionsIds = [];
     public bool IsAbstract = true;
     public Duration DurationTime;
 
@@ -41,7 +40,7 @@ public class ChildBox : Box
             ToggleAbstract();
         }
 
-        ActionsName.Add(action.Name);
+        ActionsIds.Add(action.Id);
     }
 
     public async Task CreateAsync(string path, string filePath)
@@ -65,7 +64,7 @@ public class ChildBox : Box
 
     public ChildData Export()
     {
-        return new ChildData(Id, Name, Description, Archived, ParentId, ActionsName,
+        return new ChildData(Id, Name, Description, Archived, ParentId, ActionsIds,
             IsAbstract,
             DurationTime, CreatedAt, UpdatedAt);
     }

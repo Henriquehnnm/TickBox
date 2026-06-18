@@ -1,7 +1,6 @@
 using Avalonia.Controls;
-using Avalonia.Interactivity;
 
-namespace TickBox.UI;
+namespace TickBox.UI.Views;
 
 public partial class MainWindow : Window
 {
