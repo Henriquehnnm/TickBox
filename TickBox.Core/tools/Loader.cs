@@ -3,6 +3,7 @@ using TickBox.Core.Models;
 
 namespace TickBox.Core.tools;
 
+// A gambiarra transcendeu a definição de gambiarra e virou gambiarra.
 public class Loader
 {
     private ParentData _parent;
@@ -23,7 +24,7 @@ public class Loader
         var jsonString = await File.ReadAllTextAsync(path);
         loader._parent =
             JsonSerializer.Deserialize<ParentData>(jsonString) ??
-            throw new InvalidOperationException(); // TODO - tratar null de forma mais elegante 1/3
+            throw new InvalidOperationException("Error reading ParentBox");
 
         return loader;
     }
@@ -42,7 +43,7 @@ public class Loader
         foreach (var child in results)
         {
             _children.Add(child ??
-                         throw new InvalidOperationException()); // TODO - Resolver null de forma mais elegante aqui tbm 2/3
+                         throw new InvalidOperationException("Error reading ChildBox"));
         }
     }
 
@@ -61,12 +62,12 @@ public class Loader
 
         var results = await Task.WhenAll(tasks);
         foreach (var a in
-                 results) // Pelo robozin do .NET, nao me julguem por esses 2 loops, eu tenho trauma de if e for...
+                 results) // Pelo robozin do .NET, não me julguem por esses 2 loops, eu tenho trauma de if e for...
         {
             foreach (var i in a)
             {
                 _actions.Add(i ??
-                            throw new InvalidOperationException()); // TODO -  Tratar  Null de forma mais elegante aqui tbm 3/3
+                            throw new InvalidOperationException("Error reading ActionBox"));
             }
         }
     }

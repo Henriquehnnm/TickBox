@@ -23,9 +23,13 @@ public class ActionBox : Box
     public ActionBox(string name, string description, ChildBox child, string content, Duration durationTime) : base(
         name, description)
     {
-        this.ChildId = child.Id;
-        this.Content = content;
-        this.DurationTime = durationTime;
+        if (durationTime > Duration.FromHours(4))
+        {
+            Console.WriteLine("TODO - Erro aqui, nao vou tratar erro agora, mas isso aqui e pra me lembrar.");
+        }
+        ChildId = child.Id;
+        Content = content;
+        DurationTime = durationTime;
     }
 
     public async Task CreateAsync(string path, string filePath)
@@ -48,8 +52,8 @@ public class ActionBox : Box
 
     public ActionData Export()
     {
-        return new ActionData(this.Id, this.Name, this.Description, this.Archived, this.ChildId,
-            this.DurationTime,
-            this.CreatedAt, this.UpdatedAt);
+        return new ActionData(Id, Name, Description, Archived, ChildId,
+            DurationTime,
+            CreatedAt, UpdatedAt);
     }
 }

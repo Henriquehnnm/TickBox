@@ -11,28 +11,23 @@ public record ChildData(
     Guid ParentId,
     List<Guid> ActionsIds,
     bool IsAbstract,
-    Duration DurationTime,
+    Duration CachedDuration,
     DateTime CreatedAt,
     DateTime UpdatedAt);
 
-public class ChildBox : Box
+public class ChildBox(string name, string description, ParentBox parent)
+    : Box(name, description)
 {
-    public Guid ParentId;
+    public Guid ParentId = parent.Id;
     public List<Guid> ActionsIds = [];
     public bool IsAbstract = true;
-    public Duration DurationTime;
-
-    public ChildBox(string name, string description, ParentBox parent, Duration duration) : base(name, description)
-    {
-        ParentId = parent.Id;
-        DurationTime = duration;
-    }
+    private Duration _cachedDuration = Duration.Zero; // Melhor assim do que null.
 
     public void ToggleAbstract()
     {
         IsAbstract = !IsAbstract;
     }
-
+    
     public void AddAction(ActionBox action)
     {
         if (IsAbstract)
@@ -41,6 +36,7 @@ public class ChildBox : Box
         }
 
         ActionsIds.Add(action.Id);
+        _cachedDuration += action.DurationTime;
     }
 
     public async Task CreateAsync(string path, string filePath)
@@ -66,6 +62,6 @@ public class ChildBox : Box
     {
         return new ChildData(Id, Name, Description, Archived, ParentId, ActionsIds,
             IsAbstract,
-            DurationTime, CreatedAt, UpdatedAt);
+            _cachedDuration, CreatedAt, UpdatedAt);
     }
 }

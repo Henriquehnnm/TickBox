@@ -3,20 +3,20 @@
 public abstract class Box
 {
     public Guid Id;
-    public string Name;
-    public string Description;
-    public bool Archived;
-    public DateTime CreatedAt;
-    public DateTime UpdatedAt;
+    protected string Name;
+    protected string Description;
+    protected bool Archived;
+    protected DateTime CreatedAt;
+    protected DateTime UpdatedAt;
 
-    public Box(string name, string description)
+    protected Box(string name, string description)
     {
         DateTime now = DateTime.Now;
-        this.Id = Guid.NewGuid();
-        this.Name = name;
-        this.Description = description;
-        this.Archived = false;
-        this.CreatedAt = now;
-        this.UpdatedAt = now;
+        Id = Guid.NewGuid();
+        Name = name;
+        Description = description;
+        Archived = false;
+        CreatedAt = now;
+        UpdatedAt = now;
     }
 }

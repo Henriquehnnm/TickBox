@@ -4,7 +4,7 @@ using TickBox.Core.Models;
 
 namespace TickBox.Core;
 
-enum BoxType
+internal enum BoxType
 {
     ParentBox,
     ChildBox,
@@ -17,14 +17,14 @@ enum BoxType
  */
 public class TickBox
 {
-    public ParentBox Parent;
-    public List<ChildBox> Children = [];
-    public List<ActionBox> Actions = [];
-    private string _globalPath;
+    public ParentBox Parent { get; private set; }
+    private readonly List<ChildBox> _children = [];
+    private readonly List<ActionBox> _actions = [];
+    private readonly string _globalPath;
 
     private TickBox()
     {
-        string local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
+        var local = Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData);
         _globalPath = Path.Combine(local, "tickbox", "storage");
     }
 
@@ -35,6 +35,16 @@ public class TickBox
         tickbox.Parent = new ParentBox(name, description, startDate, endDate);
         await tickbox.StartStorageAsync();
         return tickbox;
+    }
+
+    public IReadOnlyList<ChildBox> GetChildren()
+    {
+        return _children.AsReadOnly();
+    }
+
+    public IReadOnlyList<ActionBox> GetActions()
+    {
+        return _actions.AsReadOnly();
     }
 
     private async Task StartStorageAsync()
@@ -48,7 +58,7 @@ public class TickBox
         }
         catch (Exception err)
         {
-            Console.WriteLine(err);
+            throw new InvalidOperationException($"Storage initialization error: {err}");
         }
     }
 
@@ -76,17 +86,17 @@ public class TickBox
 
     private ChildBox? GetChildById(Guid id)
     {
-        return Children.Find(c => c.Id == id);
+        return _children.Find(c => c.Id == id);
     }
 
-    public async Task CreateChildAsync(string name, string description, Duration durarionTime)
+    public async Task CreateChildAsync(string name, string description)
     {
-        var child = new ChildBox(name, description, Parent, durarionTime);
-        Children.Add(child);
+        var child = new ChildBox(name, description, Parent);
+        _children.Add(child);
         Parent.AddChild(child);
         string folderPath = Path.Combine(_globalPath, Parent.Id.ToString(), child.Id.ToString());
         await child.CreateAsync(folderPath, "meta.json");
-        await RefreshData(Path.Join(_globalPath, Parent.Id.ToString(), "meta.json"),
+        await RefreshData(Path.Combine(_globalPath, Parent.Id.ToString(), "meta.json"),
             BoxType.ParentBox);
     }
 
@@ -98,9 +108,10 @@ public class TickBox
         if (real is not null)
         {
             var action = new ActionBox(name, description, real, content, durationTime);
-            Actions.Add(action);
+            _actions.Add(action);
             real.AddAction(action);
-            string folderPath = Path.Combine(_globalPath, Parent.Id.ToString(), real.Id.ToString(), action.Id.ToString());
+            string folderPath =
+                Path.Combine(_globalPath, Parent.Id.ToString(), real.Id.ToString(), action.Id.ToString());
             await action.CreateAsync(folderPath, "meta.json");
             string childMetaPath =
                 Path.Combine(_globalPath, Parent.Id.ToString(), real.Id.ToString(),

@@ -15,29 +15,18 @@ public record ParentData(
     DateTime UpdatedAt
 );
 
-enum CreateType
-{
-    User,
-    Object
-}
-
-public class ParentBox : Box
+public class ParentBox(string name, string description, DateTime startDate, DateTime endDate)
+    : Box(name, description)
 {
     public List<Guid> ChildrenIds = [];
     public bool IsDraft;
-    public DateTime StartDate;
-    public DateTime EndDate;
-
-    public ParentBox(string name, string description, DateTime startDate, DateTime endDate) : base(name, description)
-    {
-        this.StartDate = startDate;
-        this.EndDate = endDate;
-    }
+    public DateTime StartDate = startDate;
+    public DateTime EndDate = endDate;
 
 
     public void ToggleDraft()
     {
-        this.IsDraft = !this.IsDraft;
+        IsDraft = !IsDraft;
     }
 
     public void AddChild(ChildBox child)
@@ -69,7 +58,7 @@ public class ParentBox : Box
 
     public ParentData Export()
     {
-        return new ParentData(this.Id, this.Name, this.Description, this.Archived, this.ChildrenIds, this.IsDraft,
-            this.StartDate, this.EndDate, this.CreatedAt, this.UpdatedAt);
+        return new ParentData(Id, Name, Description, Archived, ChildrenIds, IsDraft,
+            StartDate, EndDate, CreatedAt, UpdatedAt);
     }
 }
