@@ -1,0 +1,58 @@
+using Gtk 4.0;
+using Adw 1;
+
+Adw.ApplicationWindow main_window {
+  default-width: 800;
+  default-height: 600;
+  width-request: 360;
+  height-request: 360;
+
+  title: _("Tickbox.UI");
+
+  Adw.ToolbarView {
+    [top]
+    Adw.HeaderBar {
+      [end]
+      MenuButton {
+        tooltip-text: _("Main Menu");
+        icon-name: "open-menu-symbolic";
+        menu-model: primary_menu;
+        primary: true;
+      }
+    }
+
+    Box {
+      orientation: vertical;
+      valign: center;
+
+      Label {
+        label: _("Hello, World!");
+
+        styles [
+          "title-1"
+        ]
+      }
+
+      Label {
+        label: _("This is a starting point for Tickbox.UI.");
+        margin-top: 12;
+      }
+    }
+  }
+}
+
+menu primary_menu {
+  section {
+    item (_("Preferences"), "app.preferences")
+  }
+
+  section {
+    item (_("Keyboard Shortcuts"), "app.keyboardShortcuts")
+    item (_("Help"), "app.help")
+    item (_("About Tickbox.UI"), "app.about")
+  }
+
+  section {
+    item (_("Quit"), "app.quit")
+  }
+}

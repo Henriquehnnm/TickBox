@@ -1,0 +1,67 @@
+{
+  "app-id": "net.henriquehnnm.TickBox",
+  "runtime": "org.gnome.Platform",
+  "runtime-version": "47",
+  "sdk": "org.gnome.Sdk",
+  "command": "TickBox.UI",
+  "sdk-extensions": [
+    "org.freedesktop.Sdk.Extension.dotnet9"
+  ],
+  "build-options": {
+    "append-path": "/usr/lib/sdk/dotnet9/bin",
+    "append-ld-library-path": "/usr/lib/sdk/dotnet9/lib",
+    "env": {
+      "PKG_CONFIG_PATH": "/app/lib/pkgconfig:/app/share/pkgconfig:/usr/lib/pkgconfig:/usr/share/pkgconfig:/usr/lib/sdk/dotnet9/lib/pkgconfig",
+      "RUNTIME": "linux-x64"
+    }
+  },
+  "finish-args": [
+    "--share=network",
+    "--share=ipc",
+    "--socket=fallback-x11",
+    "--device=dri",
+    "--socket=wayland"
+  ],
+  "modules": [
+    {
+      "name": "blueprint-compiler",
+      "buildsystem": "meson",
+      "cleanup": [
+        "*"
+      ],
+      "sources": [
+        {
+          "type": "git",
+          "url": "https://gitlab.gnome.org/jwestman/blueprint-compiler",
+          "tag": "v0.16.0"
+        }
+      ]
+    },
+    {
+      "name": "TickBox.UI",
+      "buildsystem": "meson",
+      "builddir": true,
+      "build-options": {
+        "arch": {
+          "aarch64": {
+            "env": {
+              "RUNTIME": "linux-arm64"
+            }
+          },
+          "x86_64": {
+            "env": {
+              "RUNTIME": "linux-x64"
+            }
+          }
+        }
+      },
+      "sources": [
+        "nuget-sources.json",
+        {
+          "type": "dir",
+          "path": ".."
+        }
+      ]
+    }
+  ]
+}

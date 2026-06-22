@@ -1,0 +1,8 @@
+[Desktop Entry]
+Type=Application
+Name=Tickbox.UI
+Exec=TickBox.UI
+Icon=net.henriquehnnm.TickBox
+Terminal=false
+Categories=GTK;
+StartupNotify=true

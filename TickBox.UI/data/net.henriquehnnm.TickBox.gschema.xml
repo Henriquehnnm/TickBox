@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schemalist gettext-domain="TickBox.UI">
+    <schema id="net.henriquehnnm.TickBox" path="/net/henriquehnnm/TickBox/">
+    </schema>
+</schemalist>
